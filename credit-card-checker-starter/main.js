@@ -25,10 +25,19 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 
-
-
-
-
-
+const validateCred = (seq) => {
+  let total = 0;
+  for (let i = seq.length - 1; i >= 0; i--) {
+    let current = seq[i]
+    if ((seq.length - 1 - i) % 2 === 1) {
+      current *= 2;
+      if (current > 9) {
+        current -= 9;
+      }
+    } 
+    total += current
+  } 
+  return total % 10 === 0;
+}
 
 
