@@ -40,4 +40,16 @@ const validateCred = (seq) => {
   return total % 10 === 0;
 }
 
+const findInvalidCards = (cards) => {
+  let validCards = [];
+  let invalidCards = [];
+  for (let i = 0; i < cards.length; i++) {
+    let currentCard = cards[i]
+    if (validateCred(currentCard) === false) {
+      invalidCards.push(currentCard)
+    }
+  }
+  console.log('invalid numbers: ' + invalidCards);
+}
 
+findInvalidCards(batch);
