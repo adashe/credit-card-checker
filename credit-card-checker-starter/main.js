@@ -40,16 +40,48 @@ const validateCred = (seq) => {
   return total % 10 === 0;
 }
 
+
 const findInvalidCards = (cards) => {
-  let validCards = [];
   let invalidCards = [];
   for (let i = 0; i < cards.length; i++) {
     let currentCard = cards[i]
     if (validateCred(currentCard) === false) {
-      invalidCards.push(currentCard)
+      invalidCards.push(currentCard);
     }
   }
-  console.log('invalid numbers: ' + invalidCards);
+  return invalidCards;
 }
 
-findInvalidCards(batch);
+
+const idInvalidCardCompanies = (invalidCards) => {
+  companies = [];
+  for (let i = 0; i < invalidCards.length; i++) {
+    switch (invalidCards[i][0]) {
+      case 3:
+        if (companies.indexOf('Amex') === -1) {
+          companies.push('Amex');
+        }
+        break
+      case 4:
+        if (companies.indexOf('Visa') === -1) {
+          companies.push('Visa');
+        }
+        break
+      case 5:
+        if (companies.indexOf('Mastercard') === -1) {
+          companies.push('Mastercard');
+        }
+        break
+      case 6: 
+        if (companies.indexOf('Discover') === -1) {
+          companies.push('Discover');
+        }
+        break
+      default:
+        console.log('Company not found');
+    } 
+  }
+  return companies;
+}
+
+console.log(idInvalidCardCompanies(batch));
